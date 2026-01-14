@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lawn Care Cost Estimator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    input, button {
+      margin: 5px 0;
+      padding: 8px;
+      width: 200px;
+    }
+    h3 {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Lawn Care Cost Estimator</h2>
+
+  <p>Average yard size: 13,000 sq ft</p>
+
+  <label for="sqft">Enter your lawn size (sq ft):</label><br>
+  <input type="number" id="sqft" placeholder="Enter lawn size" value="13000"><br>
+
+  <button onclick="calculateEstimate()">Calculate Estimate</button>
+
+  <h3 id="estimate"></h3>
+
+  <script>
+    const pricePerSqft = 0.02; // $0.02 per square foot
+
+    function calculateEstimate() {
+      const sqftInput = document.getElementById("sqft").value;
+      const sqft = parseFloat(sqftInput);
+
+      if (!sqft || sqft <= 0) {
+        alert("Please enter a valid lawn size.");
+        return;
+      }
+
+      const estimate = sqft * pricePerSqft;
+      document.getElementById("estimate").innerText = 
+        `Estimated Lawn Care Cost: $${estimate.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    }
+  </script>
+</body>
+</html>
